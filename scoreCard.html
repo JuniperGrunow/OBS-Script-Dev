@@ -1,0 +1,103 @@
+<head>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin:0px;
+            font-size: 4vw;
+        }
+        .background{
+            background-color: #3f3f54;
+            border-radius: 3vw;
+            padding:1vw;
+            width:100vw;
+            margin:0px;
+        }
+
+        .foregroundContainer{
+            background-color:#6d6d8a;
+            border-radius: 2rem;
+            padding:1.5vw;
+            font-weight: bolder;
+            text-align: center;
+        }
+        #nameContainer{
+            width: 70%;
+        }
+        #scoreContainer{
+            width:20%;
+        }
+        table,tr{
+            width:100%;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="background">
+        <table>
+            <tr>
+                <td id="nameContainer"><div class="foregroundContainer" ><span id="redTeamName"></span></div></td>
+                <td id="scoreContainer"><div class="foregroundContainer" ><span id="redTeamScore">0</span></div></td>
+            </tr>
+            <tr>
+                <td id="nameContainer"><div class="foregroundContainer" ><span id="yellowTeamName"></span></div></td>
+                <td id="scoreContainer"><div class="foregroundContainer"><span id="yellowTeamScore">0</span></div></td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript">
+        function loadRed() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+            document.getElementById("redTeamName").innerHTML = this.responseText;
+            }
+            xhttp.open("GET", "REDTEAMNAME.txt", true);
+            xhttp.send();
+        }
+        function loadYellow() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+            document.getElementById("yellowTeamName").innerHTML = this.responseText;
+            }
+            xhttp.open("GET", "YELLOWTEAMNAME.txt", true);
+            xhttp.send();
+        }
+
+        function loadRedScore(){
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+            document.getElementById("redTeamScore").innerHTML = this.responseText;
+            }
+            xhttp.open("GET", "REDSCORE.txt", true);
+            xhttp.send();
+        }
+
+        function loadYellowScore(){
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+            document.getElementById("yellowTeamScore").innerHTML = this.responseText;
+            }
+            xhttp.open("GET", "YELLOWSCORE.txt", true);
+            xhttp.send();
+        }
+
+        function keyUpLoad(event){
+            console.log("we read your inputs")
+            if(event.ctrlKey===1 && event.key==='s'||event.key==='s'){
+                console.log("entering update")
+                loadRed();
+                loadRedScore();
+                loadYellow();
+                loadYellowScore();
+            }
+        }
+
+        window.addEventListener("keyup",keyUpLoad);
+        window.addEventListener("load", (event)=> {
+            loadRed();
+            loadYellow();
+            loadRedScore();
+            loadYellowScore();
+        });
+    </script>
+</body>
