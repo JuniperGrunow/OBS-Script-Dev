@@ -416,6 +416,7 @@ function script_load(settings)
     obs.obs_data_array_release(hotkey_save_array4)
 
 end
+
 --Addition call to close any open txt files. All files should be closed anyway, but as an extra procaution this is here.
 function script_unload()
     io.close()
