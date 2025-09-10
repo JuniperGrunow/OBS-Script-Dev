@@ -1,7 +1,7 @@
 obs = obslua
 --Global Variables
 --Array that holds all possible end iterations. Goes up to 10th end just incase.
-endString = {"1st end","2nd end","3rd end","4th end", "5th end","6th end","7th end","8th end","9th end","10th end"}
+endString = {"1st","2nd","3rd","4th", "5th","6th","7th","8th","9th","10th"}
 endNumber = 1
 --Holds text source that user selects
 source_name = ""
